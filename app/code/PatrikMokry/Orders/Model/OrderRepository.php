@@ -36,7 +36,7 @@ class OrderRepository implements OrderRepositoryInterface
 	public function getOrderByIdAndEmail($id, $email)
 	{
 		$searchCriteria = $this->searchCriteriaBuilder
-			->addFilter('entity_id', $id)
+			->addFilter('increment_id', $id)
 			->addFilter('customer_email', $email)
 			->setPageSize(1)
 			->setCurrentPage(1)
@@ -52,6 +52,7 @@ class OrderRepository implements OrderRepositoryInterface
 				'status' => $order->getStatus(),
 				'created_at' => $order->getCreatedAt()
 			]);
+			die();
 		} else {
 			throw new NotFoundException(__('OOps.'));
 		}
